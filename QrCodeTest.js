@@ -3,7 +3,8 @@
 
 import React, {Component} from 'react';
 import QRCode from 'react-native-qrcode-svg';
-//import RNFS from 'react-native-fs';
+import RNFS from 'react-native-fs';
+import CameraRoll from "@react-native-community/cameraroll";
 
 import {
   AppRegistry,
@@ -15,7 +16,6 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   Keyboard,
-  CameraRoll,
   ToastAndroid,
 } from 'react-native';
 
@@ -93,6 +93,7 @@ class QrHelloWorld extends Component {
               logo={{uri: base64Logo}}
               logoSize={30}
               logoBackgroundColor="transparent"
+              getRef={ref => (this.svg = ref)}
             />
           </View>
         </View>

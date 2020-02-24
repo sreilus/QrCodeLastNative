@@ -10,8 +10,10 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-community/cameraroll": "^1.4.1",
     "react": "16.9.0",
     "react-native": "0.61.5",
+    "react-native-fs": "^2.16.6",
     "react-native-qrcode-svg": "^6.0.3",
     "react-native-svg": "^11.0.1"
   },
