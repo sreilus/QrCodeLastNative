@@ -36,6 +36,10 @@ target 'QrCodeLastNative' do
 
   pod 'RNSVG', :path => '../node_modules/react-native-svg'
 
+
+
+  pod 'RNPermissions', :path => '../node_modules/react-native-permissions'
+
   target 'QrCodeLastNativeTests' do
     inherit! :search_paths
     # Pods for testing

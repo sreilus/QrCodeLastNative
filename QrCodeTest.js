@@ -1,10 +1,9 @@
 'use strict';
-/* eslint react/prop-types: 0 */
 
 import React, {Component} from 'react';
 import QRCode from 'react-native-qrcode-svg';
 import RNFS from 'react-native-fs';
-import CameraRoll from "@react-native-community/cameraroll";
+import CameraRoll from '@react-native-community/cameraroll';
 
 import {
   AppRegistry,
@@ -41,13 +40,13 @@ class QrHelloWorld extends Component {
   saveQrToDisk = () => {
     this.svg.toDataURL(data => {
       RNFS.writeFile(
-        RNFS.CachesDirectoryPath + '/some-name.png',
+        RNFS.CachesDirectoryPath + '/' + this.state.input1 + '.png',
         data,
         'base64',
       )
         .then(success => {
           return CameraRoll.saveToCameraRoll(
-            RNFS.CachesDirectoryPath + '/some-name.png',
+            RNFS.CachesDirectoryPath + '/' + this.state.input1 + '.png',
             'photo',
           );
         })
