@@ -12,21 +12,21 @@ import {
   TextInput,
   Text,
   Button,
-  TouchableOpacity,
   TouchableWithoutFeedback,
   Keyboard,
   ToastAndroid,
+  Alert,
 } from 'react-native';
 
 const staticLabel = '/*deneme*/';
 
-class QrHelloWorld extends Component {
+class QrCodeGenerator extends Component {
   svg;
 
   state = {
     input1: '',
     input2: '',
-    text: 'deneme',
+    text: 'SDFSDFSFSFFSFFdsfd dfsdfdsfffffffffffffffffffff sdssssssssssssssss sdddddddddddddddddd fffffffff dsdsdddddddddddddddddddddddddddddddddddddddddddddddd sddddddddd  ddddddddddddddddddddddddddddddddddddddddddddddddddddfs dssssssssssssssssssssssssssssssssss sddddddddddddddddddddddddddddddddd +sddddddddddddddddddddddd +sd ssssssssssssssssssssssssssssssss',
   };
 
   generateQrCode = () => {
@@ -52,7 +52,7 @@ class QrHelloWorld extends Component {
         })
         .then(() => {
           this.setState({busy: false, imageSaved: true});
-          ToastAndroid.show('Saved to gallery !!', ToastAndroid.SHORT);
+          ToastAndroid.show('Galeriye Kaydedildi !', ToastAndroid.SHORT);
         });
     });
   };
@@ -84,7 +84,19 @@ class QrHelloWorld extends Component {
               justifyContent: 'center',
             }}
             onPress={() => this.generateQrCode()}
-            title="Generate QR Code"
+            title="QR Code Oluştur ve Kaydet"
+          />
+          <Button
+            style={{
+              marginBottom: 50,
+              marginTop: 50,
+              backgroundColor: 'aqua',
+              justifyContent: 'center',
+            }}
+            onPress={() =>
+              this.props.navigation.navigate('ResultPage', {name: 'jack'})
+            }
+            title="Geçiş Yap"
           />
           <View style={{marginTop: 50}}>
             <QRCode
@@ -95,6 +107,15 @@ class QrHelloWorld extends Component {
               getRef={ref => (this.svg = ref)}
             />
           </View>
+          <Button
+            style={{
+              marginBottom: 50,
+              backgroundColor: 'aqua',
+              justifyContent: 'center',
+            }}
+            onPress={() => this.saveQrToDisk()}
+            title="Kaydet"
+          />
         </View>
       </TouchableWithoutFeedback>
     );
@@ -120,6 +141,6 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('QrHelloWorld', () => QrHelloWorld);
+AppRegistry.registerComponent('QrCodeGenerator', () => QrCodeGenerator);
 
-module.exports = QrHelloWorld;
+module.exports = QrCodeGenerator;

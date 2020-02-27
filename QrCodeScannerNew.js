@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {SafeAreaView, Text, StyleSheet,Alert} from 'react-native';
+import {SafeAreaView, Text, StyleSheet, Alert} from 'react-native';
 import {QRScannerRectView} from 'react-native-qrcode-scanner-view';
 import {RNCamera} from 'react-native-camera';
 
@@ -23,7 +23,7 @@ class CodeScan extends Component {
       event.data.indexOf('http') !== -1 ||
       event.data.indexOf('https') !== -1
     ) {
-      Alert.alert('kod: ' + event.data);
+      navigation.navigate('ResultPage', {data: event.data});
     }
   };
 
@@ -35,7 +35,13 @@ class CodeScan extends Component {
           onBarCodeRead={this.barcodeReceived}
           renderFooterView={this.renderMenu}
           scanBarAnimateReverse>
-          <QRScannerRectView />
+          <QRScannerRectView
+            onScanResult={this.barcodeReceived}
+            renderHeaderView={this.renderTitleBar}
+            renderFooterView={this.renderMenu}
+            scanBarAnimateReverse={true}
+            hintText="QR Kodu Tarayınız"
+          />
         </RNCamera>
       </SafeAreaView>
     );
